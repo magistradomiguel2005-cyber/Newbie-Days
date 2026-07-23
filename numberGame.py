@@ -17,15 +17,22 @@ for i in range(1, 4):
     if att == int(random.choice(numbers)):
         print("Congratulations! You guessed the correct number!")
         break
-    else:
+    elif att != int(random.choice(numbers)):
         print("Sorry, that's not the correct number. Try again.")
-        print("type 1 if you want a hint")
-        att = int(input("Enter your answer: "))
+        print("type H if you want a hint")
+        att = input("Enter your answer: ")
 
-        if att == 1:
+        if att == "H":
             if checker(int(random.choice(numbers))):
                 print("The number is even.")
+                att = int(input("Enter your guess: "))
             else:
                 print("The number is odd.")
+                att = int(input("Enter your guess: "))
 
         attempt += 1
+    if attempt == 3:
+        print("Sorry, you've used all your attempts. Better luck next time!")
+        break
+
+
